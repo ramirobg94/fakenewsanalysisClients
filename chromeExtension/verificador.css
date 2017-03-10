@@ -1,0 +1,81 @@
+#verumBox{
+	min-height: 40vh;
+	width: 5vw;
+	position: fixed;
+	right: 20px;
+	top: 80px;
+	z-index: 10000;
+	background-color: #f8f9fb;
+	background-image: url("textured.png")
+	border-radius: 2px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	-webkit-transition: width 1s;
+	 transition: width 1s;
+	 flex-direction: row;
+	 display: flex;
+	 color: #7E8590;
+}
+#fnaBar{
+	right: 0;
+	text-align: center;
+	color: #f8f9fb;
+}
+
+#verumInfo{
+	width: 25vw;
+	text-align: center;
+	padding: 10px;
+}
+
+
+
+#fnaBottom{
+	 flex-grow: 99;
+    bottom: 0;
+    position: absolute;
+    height: 100px;
+    width: 100%;
+	background: #3891ff;
+	 -webkit-transition: height 5s; /* For Safari 3.1 to 6.0 */
+    transition: height 5s;
+    min-height: 0;
+    right: 0;
+}
+
+#eyeVerum{
+	position: absolute;
+    right: 1vw;
+    z-index: 11500;
+    bottom: 2;
+    top: 90%;
+    color: #f8f9fb;
+}
+
+#closeVerum{
+	position: absolute;
+    right: 0;
+    z-index: 11500;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}

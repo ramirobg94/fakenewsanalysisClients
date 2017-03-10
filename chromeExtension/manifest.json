@@ -1,0 +1,25 @@
+{
+"manifest_version": 2,
+"name": "Verum",
+"author": "Ramiro Blázquez González & Jose Antonio Robles",
+"version": "1.0",
+"description": "Fake News Analysis 0.9",
+	"background": {
+      "scripts": [ "background.js"]
+    },
+   "content_scripts":[
+      {
+      "matches": ["http://*/*","https://*/*"],
+      "js": ["jquery-1.7.1.min.js","verificador.js"],
+      "css": ["verificador.css","animate.min.css"],
+      "run_at": "document_idle"
+      }
+   ],
+"browser_action":
+ {
+  "default_icon": "icon.png",
+  "default_popup": "popup.html",
+  "default_title": "Click here!"
+ },
+ "permissions": ["https://*.googleapis.com/","tabs","<all_urls>"]
+}
