@@ -17,7 +17,8 @@ export function loadNew(details){
       type: LOAD_NEW_ATTEMPT
     });
 
-     return Api.post('/article',{url: details}).then(response => {
+if(details){
+       return Api.post('/article',{url: details}).then(response => {
 
       console.log("response")
       console.log(response)
@@ -36,5 +37,13 @@ export function loadNew(details){
         error: err
       })
     })
+
+}else{
+  dispatch({
+        type: LOAD_NEW_FAIL,
+        error: err
+      })
+}
+
   }
 }

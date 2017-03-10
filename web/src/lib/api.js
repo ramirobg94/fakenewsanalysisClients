@@ -106,82 +106,16 @@ class Api {
       }
     }
 
-    //let options = Object.assign({ method: verb , mode: 'no-cors'}, param ? { body: param} : null );
-    //options.headers = Api.headers();
 
   var xhrPromise = new XMLHttpRequestPromise();
 
-  xhrPromise.send({
-    method: 'POST',
+  return xhrPromise.send({
+    method: verb,
     url: url,
     data: param
-  })
-  .then(function (results) {
-    if (results.status !== 200) {
-      throw new Error('request failed');
-    }
-    console.log(results)
-    return results.responseText;
-  })
-  .catch(function (e) {
-    console.error('XHR error');
   });
 
 
-
-/*http.open("POST", url, true);
-
-//Send the proper header information along with the request
-http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-http.setRequestHeader("Content-length", param.length);
-http.setRequestHeader("Connection", "close");
-
-http.onreadystatechange = function() {//Call a function when the state changes.
-  if(http.readyState == 4 && http.status == 200) {
-    var parse = JSON.parse(http.responseText)
-    callback(parse);
-  }
-}
-http.send(param);*/
-
-
-   /*return fetch(url, options).then(function(response){
-    console.log(response.body)
-      let json = response.json();
-      console.log(json)
-      
-      if (resp.ok) {
-        return json
-      }
-      return response;
-      return json.then(err => {throw err});
-    })
-    
-
-    /*throw {
-      status: response.status,
-      text: response.statusText
-    }
-  });
-
-
-    .then( resp => {
-      let json = resp.json();
-
-      if (resp.ok) {
-         json.then(response => {
-          console.log(response)
-            return response
-        })
-      }else{
-        json.catch(err => {
-                  console.log(err)
-          return err});
-      }
-
-
-      //return json.then(err => {throw err});
-    })*/
   }
 
   static xhrAuth(route, params, verb, token) {
