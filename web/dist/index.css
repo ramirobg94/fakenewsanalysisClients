@@ -1,0 +1,70 @@
+.particles-js-canvas-el{
+position: fixed;
+background: rgba(255,255,255,0.15);
+z-index: 0;
+}
+#particles-js{
+	position: fixed;
+	top: 0;
+	background: rgba(255,255,255,0.15);
+	z-index: 0;
+}
+
+#searchBar{
+	        display: flex;
+    flex-direction: row;
+    background: #fdfdfd;
+    padding: 3px 5px;
+    border-radius: 3px;
+    margin-top: 20vh;
+    padding: 10px;
+    border-radius: 3em;
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 3px, rgba(0, 0, 0, 0.239216) 0px 1px 2px;
+}
+
+#urlBox{
+    flex-grow: 80;
+}
+
+.glyphicon-search{
+	padding-top: 5px;
+	font-size: 1.5em;
+}
+
+#inputUrl:focus{
+    outline: none;
+    border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#inputUrl{
+	    background: #fdfdfd;
+	width: 100%;
+	font-size: 1.5em;
+	    border: none;
+
+}
+
+#submitBox{
+	flex: 8;
+}
+
+#gitIcon{
+	    height: 50px;
+    bottom: 10px;
+    position: absolute;
+    right: 10px;
+}
+.noPadding{
+	padding: 0;
+}
+#filterBox{
+	min-height: 100vh;
+	    background: rgba(56, 145, 255, 0.13);
+}
+
+#noticiaBox{
+	min-height: 100vh;
+	background-color: rgb(248, 249, 251);
+}
