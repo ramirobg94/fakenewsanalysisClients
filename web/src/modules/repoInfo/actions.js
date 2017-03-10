@@ -1,4 +1,6 @@
-import { LOAD_URL, LOAD_ID, LOAD_TEST, LOAD_REVISION} from './actionTypes';
+import { LOAD_URL, LOAD_NEW_ATTEMPT, LOAD_NEW_SUCCESS, LOAD_NEW_FAIL } from './actionTypes';
+//import {get, post} from '../../lib/api';
+import Api from '../../lib/api';
 
 export function loadUrl(payload){
   return {
@@ -7,23 +9,32 @@ export function loadUrl(payload){
   }
 }
 
-export function loadId(payload){
-  return {
-  	type: LOAD_ID,
-    payload: {id: payload}
-  }
-}
+export function loadNew(details){
 
-export function loadTests(payload){
-  return {
-  	type: LOAD_TEST,
-    payload: payload
-  }
-}
+  return (dispatch) => {
 
-export function loadRevision(payload){
-  return {
-    type: LOAD_REVISION,
-    payload: {revision: payload}
+    dispatch({
+      type: LOAD_NEW_ATTEMPT
+    });
+
+     return Api.post('/article',{url: details}).then(response => {
+
+      console.log("response")
+      console.log(response)
+      dispatch({
+        type: LOAD_NEW_SUCCESS,
+        payload: response
+      });
+
+
+    })
+    .catch( err => {
+      console.log("error")
+      console.log(err)
+      dispatch({
+        type: LOAD_NEW_FAIL,
+        error: err
+      })
+    })
   }
 }

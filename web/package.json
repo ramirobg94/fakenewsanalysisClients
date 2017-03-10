@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "chart.js": "^2.5.0",
+    "form-data": "^2.1.2",
     "isomorphic-fetch": "^2.2.1",
     "normalizr": "^2.2.1",
     "rd3": "^0.7.4",

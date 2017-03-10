@@ -31,7 +31,7 @@ class Busqueda extends Component{
 
 
 const mapStateToProps = state => ({
-	url: state.repoInfo.url,
+	url: state.repoInfo.repoInfo.url,
 });
 
 const mapDispatchToProps = {

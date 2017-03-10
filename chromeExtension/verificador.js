@@ -1,9 +1,17 @@
-/*console.log(window.location.href)
-console.log(window.location)
+console.log(window.location.hostname)
+/*console.log(window.location)
 console.log(window.document)*/
 
 var d = new Date();
 
+const whiteList = [
+  'elpais',
+  'publico',
+  'elmundo',
+  'larazon',
+  'periodistadigital'
+
+]
 const thumb = '<svg version="1.1" id="pik_obj_453_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0.1 1.4 31.8 29" enable-background="new 0 0 32 32" xml:space="preserve" preserveAspectRatio="none">'+
 '<path d="M30.808,14.567c0.684-0.666,1.093-1.727,1.093-2.527c0-1.259-1.01-3.16-2.531-3.16h-7.019'+
 'c0.704-1.114,1.857-3.038,2.072-4.034c0.276-1.291-0.603-2.686-1.96-3.108c-1.23-0.376-2.684,0.259-3.385,1.491'+
@@ -40,6 +48,20 @@ $(document.body).append(
   '</div>')
 
 $(document).ready(function() {
+
+  var encontrado = false;
+
+  for(var i = 0; i < whiteList.length; i++ ){
+
+    if(window.location.hostname.includes(whiteList[i]) ) {
+      encontrado = true;
+      break;
+    }
+  }
+  if(encontrado){
+  }else{
+    $('#verumBox').remove();
+  }
 
   $("#verumBox").click(function() {
     $('#verumBox').css('width','30vw'); 

@@ -1,22 +1,30 @@
-import { LOAD_URL, LOAD_ID, LOAD_TEST,LOAD_REVISION } from './actionTypes';
+import { LOAD_URL, LOAD_NEW_ATTEMPT, LOAD_NEW_SUCCESS, LOAD_NEW_FAIL } from './actionTypes';
+
+import  { combineReducers } from 'redux';
 
 export * from './actions';
 
 
-const initialState = {
-  url: ''
-}
-function repoInfo(state= initialState, action){
+const url = '';
+function repoInfo(state= url, action){
   switch(action.type){
     case LOAD_URL:
-    case LOAD_REVISION:
-    case LOAD_ID:
-    case LOAD_TEST:
       return Object.assign({}, state, action.payload);
-
     default:
       return state;
   }
 }
 
-export default repoInfo;
+function noticias(state= {}, action){
+  switch(action.type){
+    case LOAD_NEW_SUCCESS:
+      return Object.assign({}, state, action.payload);
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({
+  repoInfo,
+  noticias,
+})

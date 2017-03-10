@@ -1,4 +1,4 @@
 export const LOAD_URL= 'LOAD_URL';
-export const LOAD_ID= 'LOAD_ID';
-export const LOAD_TEST= 'LOAD_TEST';
-export const LOAD_REVISION = 'LOAD_REVISION';
+export const LOAD_NEW_ATTEMPT= 'LOAD_NEW_ATTEMPT';
+export const LOAD_NEW_SUCCESS= 'LOAD_NEW_SUCCESS';
+export const LOAD_NEW_FAIL= 'LOAD_NEW_FAIL';
