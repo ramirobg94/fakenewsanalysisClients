@@ -102,19 +102,36 @@ class Api {
       }
     }
 
-    let options = Object.assign({ method: verb , mode: 'no-cors'}, param ? { body: param} : null );
-    options.headers = Api.headers();
+    //let options = Object.assign({ method: verb , mode: 'no-cors'}, param ? { body: param} : null );
+    //options.headers = Api.headers();
+  var http = new XMLHttpRequest();
 
-   return fetch(url, options).then(function(response){
+http.open("POST", url, true);
+
+//Send the proper header information along with the request
+http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+http.setRequestHeader("Content-length", param.length);
+http.setRequestHeader("Connection", "close");
+
+http.onreadystatechange = function() {//Call a function when the state changes.
+  if(http.readyState == 4 && http.status == 200) {
+    var parse = JSON.parse(http.responseText)
+    return parse;
+  }
+}
+http.send(param);
+
+
+   /*return fetch(url, options).then(function(response){
     console.log(response.body)
       let json = response.json();
       console.log(json)
-      /*
+      
       if (resp.ok) {
         return json
       }
       return response;
-      return json.then(err => {throw err});*/
+      return json.then(err => {throw err});
     })
     
 
@@ -125,7 +142,7 @@ class Api {
   });
 
 
-   /* .then( resp => {
+    .then( resp => {
       let json = resp.json();
 
       if (resp.ok) {

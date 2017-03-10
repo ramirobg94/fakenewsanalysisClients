@@ -33,8 +33,9 @@ class Noticias extends Component{
 			<div className="col-xs-12 col-sm-6 noPadding text-center" id="noticiaBox">
 				<h1>Título</h1>
 				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, repellendus.</h2>
+				<img className="imageNew" src="http://ep00.epimg.net/internacional/imagenes/2017/03/10/actualidad/1489160959_402895_1489161709_rrss_normal.jpg"></img>
 				<br></br>
-			<div dangerouslySetInnerHTML={{ __html: text }} ></div>
+			<div className="htmlNew" dangerouslySetInnerHTML={{ __html: text }} ></div>
 			</div>
 		)
 	}

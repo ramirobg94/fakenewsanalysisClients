@@ -67,4 +67,13 @@ z-index: 0;
 #noticiaBox{
 	min-height: 100vh;
 	background-color: rgb(248, 249, 251);
+	padding: 5vw;
+}
+
+.imageNew{
+	width: 80%;
+    margin: 30px 0px 40px;
+}
+.htmlNew{
+	text-align: justify;
 }
