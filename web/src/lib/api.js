@@ -120,11 +120,11 @@ class Api {
     if (results.status !== 200) {
       throw new Error('request failed');
     }
-    return results;
+    console.log(results)
+    return results.responseText;
   })
   .catch(function (e) {
     console.error('XHR error');
-    // ...
   });
 
 
