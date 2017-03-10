@@ -46,6 +46,9 @@ export function post(url,data){
   });
 }
 */
+
+var XMLHttpRequestPromise = require('xhr-promise');
+
 class Api {
   static headers() {
     return {
@@ -64,6 +67,7 @@ class Api {
   }
 
   static post(route, params) {
+    console.log('post')
     return this.xhr(route, params, 'POST')
   }
 
@@ -104,9 +108,28 @@ class Api {
 
     //let options = Object.assign({ method: verb , mode: 'no-cors'}, param ? { body: param} : null );
     //options.headers = Api.headers();
-  var http = new XMLHttpRequest();
 
-http.open("POST", url, true);
+  var xhrPromise = new XMLHttpRequestPromise();
+
+  xhrPromise.send({
+    method: 'POST',
+    url: url,
+    data: param
+  })
+  .then(function (results) {
+    if (results.status !== 200) {
+      throw new Error('request failed');
+    }
+    return results;
+  })
+  .catch(function (e) {
+    console.error('XHR error');
+    // ...
+  });
+
+
+
+/*http.open("POST", url, true);
 
 //Send the proper header information along with the request
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -116,10 +139,10 @@ http.setRequestHeader("Connection", "close");
 http.onreadystatechange = function() {//Call a function when the state changes.
   if(http.readyState == 4 && http.status == 200) {
     var parse = JSON.parse(http.responseText)
-    return parse;
+    callback(parse);
   }
 }
-http.send(param);
+http.send(param);*/
 
 
    /*return fetch(url, options).then(function(response){
