@@ -25,6 +25,7 @@ class Busqueda extends Component{
 		this.handleFieldChange = this.handleFieldChange.bind(this);
 		this.handleLike = this.handleLike.bind(this);
 		this.handleDisLike = this.handleDisLike.bind(this);
+		this.renderRelated = this.renderRelated.bind(this);
 	}
 
 	handleFieldChange(e){
@@ -58,7 +59,7 @@ class Busqueda extends Component{
 for (var i = 0; i < related.length; i++) {
 	console.log(related[i])
 	auxname = related[i].name;
-  toRender.push(<a href={related[i].url} key={i}> {auxname} </a>);
+  toRender.push(<p><a href={related[i].url} key={i}>-{auxname} </a></p>);
 }
 			console.log(toRender)
 			return toRender;
@@ -112,16 +113,16 @@ for (var i = 0; i < related.length; i++) {
 				<div className="col-xs-12 infoBoxItemFirst">
 					<div className="botonFa" onClick={this.handleLike}>
 						<FontAwesome name='smile-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}} />
-						<p>{this.props.likes.likes}</p>
+						<p>{this.props.likes.likes ? this.props.likes.likes : 0 }</p>
 					</div>
 					<div className="botonFa" onClick={this.handleDisLike}>
 						<FontAwesome name='frown-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}} />
-						<p>{this.props.disLikes.dislikes}</p>
+						<p>{this.props.disLikes.dislikes ? this.props.disLikes.dislikes : 0}</p>
 					</div>
 				</div>
 				<div className="col-xs-12 infoBoxItem">
 					<FontAwesome name='twitter' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
-					{this.props.twitter.tweets} veces retwitteado.
+					{this.props.twitter.tweets ? this.props.twitter.tweets : 0 } veces retwitteado.
 					<div id="barraTwitter" style={{
 					    width: this.props.twitter.tweets*2,
     height: '5px',

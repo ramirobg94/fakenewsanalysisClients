@@ -51,7 +51,8 @@ $(document.body).append(
   '<div class="btnExt" id="btnDisLike"><i class="material-icons">&#xE7F3;</i></div>'+
   '</div>'+
   '<div class="btnBoxExtLink">'+
-  '<a href="https://fakenewsaintgood.herokuapp.com/" class="">más detalles...</a>'+
+  '<a href="https://fakenewsaintgood.herokuapp.com/?url='+ window.location.href +
+  '" class="">más detalles...</a>'+
   '</div>'+
   '</div>'+
   '<div id="fnaBar"><div id="fnaBottom">rate</div><div>'+

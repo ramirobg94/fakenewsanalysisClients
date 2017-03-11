@@ -173,4 +173,7 @@ img {
 	    color: #f8f9fb;
 }
 
+.btnExt:hover{
+	background: rgba(56, 145, 255, 0.57);
+}
 
