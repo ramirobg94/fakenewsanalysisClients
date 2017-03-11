@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router';
 
-import { loadUrl } from '../modules/repoInfo';
+import { loadUrl,loadNew } from '../modules/repoInfo';
 
 import Noticia from './Detail/Noticia';
 import Busqueda from './Detail/Busqueda';
@@ -34,11 +34,14 @@ class Detail extends Component{
 
 	componentWillMount(){
 		console.log(this.props.location)
-		if(this.props.location.query){
-			console.log("no existe")
+		console.log(this.props.location.query.url)
+		if(this.props.location.query.url){
+			const urlToSearch = this.props.location.query.url
+			console.log("existe")
 			this.props.loadUrl({
-			url : this.props.location.query.url
+				url : urlToSearch
 			});
+			this.props.loadNew(urlToSearch)
 		}
 		
 		
@@ -102,6 +105,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	loadUrl,
+	loadNew
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);
