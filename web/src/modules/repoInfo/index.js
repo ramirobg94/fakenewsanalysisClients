@@ -3,7 +3,8 @@ import { LOAD_URL, LOAD_NEW_ATTEMPT, LOAD_NEW_SUCCESS, LOAD_NEW_FAIL,
   LOAD_DISLIKES_ATTEMPT, LOAD_DISLIKES_SUCCESS, LOAD_DISLIKES_FAIL,
   LOAD_FB_ATTEMPT, LOAD_FB_SUCCESS, LOAD_FB_FAIL,
   LOAD_TWITTER_ATTEMPT, LOAD_TWITTER_SUCCESS, LOAD_TWITTER_FAIL,
-  LOAD_LENGUAJE_ATTEMPT, LOAD_LENGUAJE_SUCCESS, LOAD_LENGUAJE_FAIL
+  LOAD_LENGUAJE_ATTEMPT, LOAD_LENGUAJE_SUCCESS, LOAD_LENGUAJE_FAIL,
+    LOAD_VERACITY_ATTEMPT, LOAD_VERACITY_SUCCESS, LOAD_VERACITY_FAIL
 } from './actionTypes';
 
 
@@ -81,6 +82,14 @@ function lenguaje(state= {}, action){
   }
 }
 
+function veracity(state= {}, action){
+  switch(action.type){
+    case LOAD_VERACITY_SUCCESS:
+      return Object.assign({}, state, action.payload);
+    default:
+      return state;
+  }
+}
 
 
 
@@ -91,5 +100,6 @@ export default combineReducers({
   disLikes,
   fb,
   twitter,
-  lenguaje
+  lenguaje,
+  veracity
 })

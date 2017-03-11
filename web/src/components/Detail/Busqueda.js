@@ -8,7 +8,8 @@ import { loadUrl,
 	loadDislikes,
 	loadFb,
 	loadTwitter,
-	loadLenguageAnalysis } from '../../modules/repoInfo';
+	loadLenguageAnalysis,
+	loadVeracity } from '../../modules/repoInfo';
 
 
 import Trianglify from 'react-trianglify'
@@ -31,6 +32,7 @@ class Busqueda extends Component{
 		this.props.loadFb(this.props.url);
 		this.props.loadTwitter(this.props.url);
 		this.props.loadLenguageAnalysis(this.props.url);
+		this.props.loadVeracity(this.props.url);
 	}
 
 
@@ -42,17 +44,25 @@ class Busqueda extends Component{
 
 		console.log(this.props)
 
+		var veracity = this.props.veracity.accuracy*100;
+		const accuracy = veracity.toFixed(2);
+
 		return(
 
 			<div className="col-xs-12 col-sm-6 noPadding text-center" id="filterBox">
+			<p>Veracidad:</p>
 			<div id="barOfResume">
-			<div id="barOfResumePayload" style={{ width: '70%'}}></div>
+			<div id="barOfResumePayload" style={{ width: accuracy+'%' }}> {accuracy}</div>
 			</div>
 
-			<h2>title {noticia.title} </h2>
-				<h2>Medio {noticia.source} </h2>
-				<h2>Autor {noticia.author} </h2>
-	likes {this.props.likes.likes}
+			<h3><span className="soso">Título</span> {noticia.title} </h3>
+				<h4><span className="soso">Medio</span> {noticia.source} </h4>
+				<h4><span className="soso">Autor</span> {noticia.author} </h4>
+				<i className="material-icons">&#xE87B;</i>
+				<i className="material-icons">&#xE8CD;</i>
+				<i class="material-icons">&#xE8DC;</i>
+				<i class="material-icons">&#xE8DB;</i>
+				likes {this.props.likes.likes}
 				disLikes {this.props.disLikes.dislikes}
 				comment_count {this.props.fb.comment_count}
 				share_count {this.props.fb.share_count}
@@ -70,7 +80,8 @@ const mapStateToProps = state => ({
 	disLikes: state.repoInfo.disLikes,
 	fb: state.repoInfo.fb,
 	twitter: state.repoInfo.twitter,
-	lenguaje: state.repoInfo.lenguaje
+	lenguaje: state.repoInfo.lenguaje,
+	veracity: state.repoInfo.veracity
 });
 
 const mapDispatchToProps = {
@@ -80,7 +91,8 @@ const mapDispatchToProps = {
 	loadDislikes,
 	loadFb,
 	loadTwitter,
-	loadLenguageAnalysis
+	loadLenguageAnalysis,
+	loadVeracity
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Busqueda);

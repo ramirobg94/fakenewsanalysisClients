@@ -3,7 +3,8 @@ import { LOAD_URL, LOAD_NEW_ATTEMPT, LOAD_NEW_SUCCESS, LOAD_NEW_FAIL,
   LOAD_DISLIKES_ATTEMPT, LOAD_DISLIKES_SUCCESS, LOAD_DISLIKES_FAIL,
   LOAD_FB_ATTEMPT, LOAD_FB_SUCCESS, LOAD_FB_FAIL,
   LOAD_TWITTER_ATTEMPT, LOAD_TWITTER_SUCCESS, LOAD_TWITTER_FAIL,
-  LOAD_LENGUAJE_ATTEMPT, LOAD_LENGUAJE_SUCCESS, LOAD_LENGUAJE_FAIL
+  LOAD_LENGUAJE_ATTEMPT, LOAD_LENGUAJE_SUCCESS, LOAD_LENGUAJE_FAIL,
+  LOAD_VERACITY_ATTEMPT, LOAD_VERACITY_SUCCESS, LOAD_VERACITY_FAIL,
 } from './actionTypes';
 //import {get, post} from '../../lib/api';
 import Api from '../../lib/api';
@@ -223,3 +224,38 @@ export function loadLenguageAnalysis(details){
   }
 }
 }
+
+export function loadVeracity(details){
+
+  return (dispatch) => {
+
+    dispatch({
+      type: LOAD_VERACITY_ATTEMPT
+    });
+
+    if(details){
+     return Api.post('/analysis',{url: details}).then(response => {
+
+      var jsonO  = JSON.parse(response.responseText);
+      dispatch({
+        type: LOAD_VERACITY_SUCCESS,
+        payload: jsonO
+      });
+    })
+     .catch( err => {
+      dispatch({
+        type: LOAD_VERACITY_FAIL,
+        error: err
+      })
+    })
+
+   }else{
+    dispatch({
+      type: LOAD_VERACITY_FAIL,
+      error: 'no languajes'
+    })
+  }
+}
+}
+
+
