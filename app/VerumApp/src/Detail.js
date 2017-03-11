@@ -20,9 +20,7 @@ constructor(props){
   render() {
     return (
       <View style={styles.container}>
-        
-      a
-       
+<Text>sdas</Text>
       </View>
     );
   }

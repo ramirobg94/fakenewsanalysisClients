@@ -11,18 +11,12 @@ import {
  class News extends Component {
 constructor(props){
     super(props)
-    this.state = {
-      url:'',
-      likes:{}
-    }
   } 
 
   render() {
     return (
       <View style={styles.container}>
-        
-      a
-       
+<Text>{this.props.texto}</Text>
       </View>
     );
   }
