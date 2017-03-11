@@ -22,16 +22,44 @@
 	box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 3px, rgba(0, 0, 0, 0.239216) 0px 1px 2px;
 }
 
-#urlBox{
-	flex-grow: 80;
+#searchBarPage{
+	display: flex;
+	flex-direction: row;
+	background: #fdfdfd;
+	padding: 3px 5px;
+	border-radius: 3px;
+	padding: 8px;
+	border-radius: 3em;
+	box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 3px, rgba(0, 0, 0, 0.239216) 0px 1px 2px;
+}
 }
 
+#urlBox{
+	width: 95%;
+}
+#urlBoxPage{
+	width: 95%;
+}
+
+#inputUrlPage {
+    background: #fdfdfd;
+    width: 100%;
+    font-size: 1.1em;
+    border: none;
+}
 .glyphicon-search{
 	padding-top: 5px;
 	font-size: 1.5em;
 }
 
 #inputUrl:focus{
+	outline: none;
+	border-color: inherit;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+#inputUrlPage:focus{
 	outline: none;
 	border-color: inherit;
 	-webkit-box-shadow: none;
@@ -130,5 +158,6 @@
 }
 .infoBoxItem{
 	margin-top: 5vw;
-	display: flex;
+	color: #F8F9FA;
+	text-align: center;
 }

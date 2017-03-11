@@ -36,7 +36,7 @@ class Landing extends Component{
 
 				<div id="searchBar">
 
-						<div id="urlBox" >
+						<div id="urlBox" style={{    width: '95%'}} >
 							<input
 							id="inputUrl"
 							type='url'

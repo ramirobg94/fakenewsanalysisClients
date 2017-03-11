@@ -11,7 +11,9 @@ import { loadUrl,
 	loadFb,
 	loadTwitter,
 	loadLenguageAnalysis,
-	loadVeracity } from '../../modules/repoInfo';
+	loadVeracity,
+	like,
+	dislike } from '../../modules/repoInfo';
 
 
 import Trianglify from 'react-trianglify'
@@ -20,6 +22,8 @@ class Busqueda extends Component{
 	constructor(props){
 		super(props);
 		this.handleFieldChange = this.handleFieldChange.bind(this);
+		this.handleLike = this.handleLike.bind(this);
+		this.handleDisLike = this.handleDisLike.bind(this);
 	}
 
 	handleFieldChange(e){
@@ -37,7 +41,13 @@ class Busqueda extends Component{
 		this.props.loadVeracity(this.props.url);
 	}
 
+	handleLike(){
+		this.props.like(this.props.url)
+	}
 
+	handleDisLike(){
+		this.props.dislike(this.props.url)
+	}
 
 	render(){
 
@@ -50,7 +60,7 @@ class Busqueda extends Component{
 		const accuracy = veracity.toFixed(2);
 
 		return(
-
+			
 			<div className="col-xs-12 col-sm-6 noPadding text-center" id="filterBox">
 			<p>Veracidad:</p>
 			<div id="barOfResume">
@@ -61,38 +71,32 @@ class Busqueda extends Component{
 				<h4><span className="soso">Medio</span> {noticia.source} </h4>
 				<h4><span className="soso">Autor</span> {noticia.author} </h4>
 				<div className="col-xs-12 infoBoxItemFirst">
-					<div className="botonFa">
-						<FontAwesome name='smile-o' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}} />
+					<div className="botonFa" onClick={this.handleLike}>
+						<FontAwesome name='smile-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}} />
 						<p>{this.props.likes.likes}</p>
 					</div>
-					<div className="botonFa">
-						<FontAwesome name='frown-o' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}} />
+					<div className="botonFa" onClick={this.handleDisLike}>
+						<FontAwesome name='frown-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}} />
 						<p>{this.props.disLikes.dislikes}</p>
 					</div>
 				</div>
-				<div className="col-xs-12 infoBoxItem">
-					<FontAwesome name='twitter' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+				<div className="col-xs-12 col-sm-6 infoBoxItem">
+					<FontAwesome name='twitter' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+					{this.props.twitter.tweets} veces retwitteado.
 				</div>
-				<div className="col-xs-12 infoBoxItem">
-					<FontAwesome name='facebook-official' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+				<div className="col-xs-12 col-sm-6 infoBoxItem">
+					<FontAwesome name='facebook-official' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
 					<br></br>
 					<FontAwesome name='commenting' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+					comment_count {this.props.fb.comment_count}
+					<br></br>
 					<FontAwesome name='thumbs-up' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+					share_count {this.props.fb.share_count}
 				</div>
-
-
-				
-
-				
-
-				
-
-				
-				likes {this.props.likes.likes}
-				disLikes {this.props.disLikes.dislikes}
-				comment_count {this.props.fb.comment_count}
-				share_count {this.props.fb.share_count}
-				tweets {this.props.twitter.tweets}
+				<div className="col-xs-12 infoBoxItem">
+					<FontAwesome name='language' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+					 
+				</div>
 			</div>
 		)
 	}
@@ -118,7 +122,9 @@ const mapDispatchToProps = {
 	loadFb,
 	loadTwitter,
 	loadLenguageAnalysis,
-	loadVeracity
+	loadVeracity,
+	like,
+	dislike
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Busqueda);

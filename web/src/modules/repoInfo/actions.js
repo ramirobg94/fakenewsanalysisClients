@@ -5,6 +5,9 @@ import { LOAD_URL, LOAD_NEW_ATTEMPT, LOAD_NEW_SUCCESS, LOAD_NEW_FAIL,
   LOAD_TWITTER_ATTEMPT, LOAD_TWITTER_SUCCESS, LOAD_TWITTER_FAIL,
   LOAD_LENGUAJE_ATTEMPT, LOAD_LENGUAJE_SUCCESS, LOAD_LENGUAJE_FAIL,
   LOAD_VERACITY_ATTEMPT, LOAD_VERACITY_SUCCESS, LOAD_VERACITY_FAIL,
+LOAD_LIKE_ATTEMPT, LOAD_LIKE_SUCCESS, LOAD_LIKE_FAIL,
+LOAD_DISLIKE_ATTEMPT, LOAD_DISLIKE_SUCCESS, LOAD_DISLIKE_FAIL,
+
 } from './actionTypes';
 //import {get, post} from '../../lib/api';
 import Api from '../../lib/api';
@@ -257,5 +260,75 @@ export function loadVeracity(details){
   }
 }
 }
+
+export function like(details){
+
+  return (dispatch) => {
+
+    dispatch({
+      type: LOAD_LIKE_ATTEMPT
+    });
+
+    if(details){
+     return Api.post('/like',{url: details}).then(response => {
+
+      var jsonO  = JSON.parse(response.responseText);
+      dispatch({
+        type: LOAD_LIKE_SUCCESS,
+        payload: jsonO
+      });
+       dispatch(loadLikes(details))
+    })
+     .catch( err => {
+      dispatch({
+        type: LOAD_LIKE_FAIL,
+        error: err
+      })
+    })
+
+   }else{
+    dispatch({
+      type: LOAD_LIKE_FAIL,
+      error: 'no languajes'
+    })
+  }
+}
+}
+
+
+export function dislike(details){
+
+  return (dispatch) => {
+
+    dispatch({
+      type: LOAD_DISLIKE_ATTEMPT
+    });
+
+    if(details){
+     return Api.post('/dislike',{url: details}).then(response => {
+
+      var jsonO  = JSON.parse(response.responseText);
+      dispatch({
+        type: LOAD_DISLIKE_SUCCESS,
+        payload: jsonO
+      });
+      dispatch(loadDislikes(details));
+    })
+     .catch( err => {
+      dispatch({
+        type: LOAD_DISLIKE_FAIL,
+        error: err
+      })
+    })
+
+   }else{
+    dispatch({
+      type: LOAD_DISLIKE_FAIL,
+      error: 'no languajes'
+    })
+  }
+}
+}
+
 
 

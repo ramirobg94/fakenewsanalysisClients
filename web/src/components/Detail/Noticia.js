@@ -33,7 +33,7 @@ class Noticias extends Component{
 			<div className="col-xs-12 col-sm-6 noPadding text-center" id="noticiaBox">
 				<h1>{noticia.title}</h1>
 				<h2 style={{'color': '#b1abab',
-    'fontSize': '1.5em'}}>{noticia.description}</h2>
+    			'fontSize': '1.5em'}}>{noticia.description}</h2>
 				<img className="imageNew" src={noticia.image}></img>
 				<br></br>
 			<div className="htmlNew" dangerouslySetInnerHTML={{ __html: noticia.content }} ></div>
