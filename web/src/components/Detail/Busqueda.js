@@ -45,6 +45,10 @@ class Busqueda extends Component{
 		return(
 
 			<div className="col-xs-12 col-sm-6 noPadding text-center" id="filterBox">
+			<div id="barOfResume">
+			<div id="barOfResumePayload" style={{ width: '70%'}}></div>
+			</div>
+
 			<h2>title {noticia.title} </h2>
 				<h2>Medio {noticia.source} </h2>
 				<h2>Autor {noticia.author} </h2>

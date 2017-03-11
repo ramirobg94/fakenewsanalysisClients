@@ -84,3 +84,17 @@
 	color: #b1abab;
 	font-size: 1.5em;
 }
+
+#barOfResume{
+	width: 100%;
+    height: 40px;
+    background: #3891ff;
+    border: solid 1px rgb(147, 179, 249);
+    border-radius: 0.5em;
+}
+
+#barOfResumePayload{
+    background: #f8f9fb;
+    height: 100%;
+    border-radius: 0.5em 0.2em 0.2em 0.5em;
+}
