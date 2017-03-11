@@ -84,6 +84,12 @@
 	position: absolute;
 	right: 10px;
 }
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
 .noPadding{
 	padding: 0;
 }

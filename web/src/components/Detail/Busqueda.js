@@ -49,15 +49,31 @@ class Busqueda extends Component{
 		this.props.dislike(this.props.url)
 	}
 
+	calculateMean(sentiments){
+		var sum = sentiments.reduce((sum, sentiments)=>{
+					return sum + sentiments.score;
+			}, 0);
+
+		const mean = Math.ceil(sum / sentiments.length);
+		return mean;
+	}
+
+
 	render(){
 
 		//console.log(this.props)
 		const noticia = this.props.noticia;
 
-		console.log(this.props)
+		//console.log(this.props)
 
 		var veracity = this.props.veracity.accuracy*100;
 		const accuracy = veracity.toFixed(2);
+
+		var mean = 0;
+		if(this.props.sentiments){
+			var mean = this.calculateMean(this.props.sentiments);
+		}
+		
 
 		return(
 			
@@ -95,8 +111,10 @@ class Busqueda extends Component{
 				</div>
 				<div className="col-xs-12 infoBoxItem">
 					<FontAwesome name='language' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+					{mean}
 					 
 				</div>
+					}
 			</div>
 		)
 	}
@@ -111,7 +129,8 @@ const mapStateToProps = state => ({
 	fb: state.repoInfo.fb,
 	twitter: state.repoInfo.twitter,
 	lenguaje: state.repoInfo.lenguaje,
-	veracity: state.repoInfo.veracity
+	veracity: state.repoInfo.veracity,
+	sentiments: state.repoInfo.lenguaje.sentiments
 });
 
 const mapDispatchToProps = {

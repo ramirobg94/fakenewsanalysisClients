@@ -43,7 +43,17 @@ $(document.body).append(
 	'<div id="verumBox" class="animated bounceInRight" >'+
   '<i class="material-icons" id="closeVerum">&#xE5CD;</i>'+
   '<i class="material-icons" id="eyeVerum" >&#xE417;</i>'+
-  '<div id="verumInfo" style="display: none"><h1>Resultados</h1></div>'+
+  '<div id="verumInfo" style="display: none"><p>Resultados</p>'+
+  '<div id="mensajeBox"></div>'+
+  '<br><p>¿Te parece correcta nuesta valoración?</p>'+
+  '<div class="btnBoxExt">'+
+  '<div class="btnExt" id="btnLike"><i class="material-icons">&#xE7F2;</i></div>'+
+  '<div class="btnExt" id="btnDisLike"><i class="material-icons">&#xE7F3;</i></div>'+
+  '</div>'+
+  '<div class="btnBoxExtLink">'+
+  '<a href="http://localhost:8080/detail?url='+window.location.href+'" class="">más detalles...</a>'+
+  '</div>'+
+  '</div>'+
   '<div id="fnaBar"><div id="fnaBottom">rate</div><div>'+
   '</div>')
 
@@ -72,6 +82,33 @@ $(document).ready(function() {
   $('#closeVerum').click(function(){
     $('#verumBox').remove();
   })
+
+
+  $('#btnLike').click(function(){
+    $.ajax({                        
+           type: "POST",                 
+           url: 'https://fakenewsaintgood.herokuapp.com/like',                     
+           data: {url: window.location.href} , 
+           success: function(data)             
+           {
+             //console.log(data)              
+           }
+       });
+  });
+
+  $('#btnDisLike').click(function(){
+    $.ajax({                        
+           type: "POST",                 
+           url: 'https://fakenewsaintgood.herokuapp.com/disLike',                     
+           data: {url: window.location.href} , 
+           success: function(data)             
+           {
+             //console.log(data)              
+           }
+       });
+  });
+
+
 });
 
 const url = window.location.href;
@@ -99,22 +136,22 @@ $.ajax('https://jsonplaceholder.typicode.com/posts/1', {
 });
 */
 
-$.post(root+'/analysis', {
-  /*method: 'POST',
-  data: {
-    title: 'foo',
-    body: 'bar',
-    userId: 1
-  }*/
-}).then(function(data) {
+$.ajax({                        
+           type: "POST",                 
+           url: 'https://fakenewsaintgood.herokuapp.com/analysis',                     
+           data: {url: window.location.href} , 
+           success: function(data)             
+           {
 
   var data = JSON.parse(data)
-
-  $('#fnaBottom').html(data.accuracy.toFixed(2));
-
-  $('#fnaBottom').css({height: data.accuracy*40+'vh'})
+  console.log(data.accuracy)
+  var accuracy = data.accuracy*1;
+  $('#fnaBottom').html(accuracy.toFixed(2));
+  $('#mensajeBox').append('<h1> Esta noticia es fiable en un '+accuracy.toFixed(2)*100+'% </h1>')
+  $('#fnaBottom').css({height: accuracy*40+'vh'})
   //$('#fnaBottom').css({ top : 'calc(40vh - ' +data.accuracy*40+'vh)'});
   //$('#fnaBottom').css({ top : 'calc(40vh - ' +data.accuracy*40+'vh)'});
+}
   
 });
 
@@ -125,7 +162,7 @@ $.ajax({
            data: {url: window.location.href} , 
            success: function(data)             
            {
-             console.log(data)              
+             //console.log(data)              
            }
        });
 

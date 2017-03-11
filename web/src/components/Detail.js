@@ -28,12 +28,21 @@ class Detail extends Component{
 	}
 
 	handleSubmit(e){
-		
 		this.state.changed <= 0 ? this.setState({changed: 1}) : this.setState({changed: 0});
 		this.props.loadNew(this.props.url);
 	}
 
-
+	componentWillMount(){
+		console.log(this.props.location)
+		if(this.props.location.query){
+			console.log("no existe")
+			this.props.loadUrl({
+			url : this.props.location.query.url
+			});
+		}
+		
+		
+	}
 
 
 	render(){
@@ -44,6 +53,8 @@ class Detail extends Component{
 		if(this.state.changed >= 1 ){
 			setTimeout(this.handleSubmit,200);
 		}
+
+
 
 		return(
 

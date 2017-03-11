@@ -24,7 +24,7 @@
 #verumInfo{
 	width: 25vw;
 	text-align: center;
-	padding: 10px;
+	padding: 20px 10px 10px 10px;
 }
 
 
@@ -63,7 +63,35 @@
   font-weight: 400;
   src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
 }
+.btnExt{
+      flex: 1;
+    border: solid 1px rgba(56, 145, 255, 0.37);
+    border-radius: 0.2em;
+    margin: 0px 5px;
+    padding: 10px 0 0 0;
+    background: rgba(56, 145, 255, 0.21);
+}
+.btnBoxExt{
+    flex-direction: row;
+    display: flex;
+}
 
+.btnBoxExtLink{
+    flex-direction: row;
+    display: flex;
+    bottom: 5px;
+    color: #454545;
+    position: absolute;
+    text-align: center;
+    width: 20vw;
+}
+
+
+
+    
+.fa-black{
+  color: #222;
+}
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
