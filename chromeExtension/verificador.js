@@ -51,7 +51,7 @@ $(document.body).append(
   '<div class="btnExt" id="btnDisLike"><i class="material-icons">&#xE7F3;</i></div>'+
   '</div>'+
   '<div class="btnBoxExtLink">'+
-  '<a href="http://localhost:8080/detail?url='+window.location.href+'" class="">más detalles...</a>'+
+  '<a href="https://fakenewsaintgood.herokuapp.com/" class="">más detalles...</a>'+
   '</div>'+
   '</div>'+
   '<div id="fnaBar"><div id="fnaBottom">rate</div><div>'+
@@ -146,7 +146,7 @@ $.ajax({
   var data = JSON.parse(data)
   console.log(data.accuracy)
   var accuracy = data.accuracy*1;
-  $('#fnaBottom').html(accuracy.toFixed(2));
+  $('#fnaBottom').html(accuracy.toFixed(2)*100);
   $('#mensajeBox').append('<h1> Esta noticia es fiable en un '+accuracy.toFixed(2)*100+'% </h1>')
   $('#fnaBottom').css({height: accuracy*40+'vh'})
   //$('#fnaBottom').css({ top : 'calc(40vh - ' +data.accuracy*40+'vh)'});

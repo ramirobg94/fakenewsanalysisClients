@@ -13,6 +13,7 @@ import { loadUrl,
 	loadLenguageAnalysis,
 	loadVeracity,
 	like,
+	loadrelated,
 	dislike } from '../../modules/repoInfo';
 
 
@@ -39,6 +40,7 @@ class Busqueda extends Component{
 		this.props.loadTwitter(this.props.url);
 		this.props.loadLenguageAnalysis(this.props.url);
 		this.props.loadVeracity(this.props.url);
+		this.props.loadrelated(this.props.url);
 	}
 
 	handleLike(){
@@ -49,13 +51,30 @@ class Busqueda extends Component{
 		this.props.dislike(this.props.url)
 	}
 
+	renderRelated(related){
+		var toRender = [];
+		console.log(related)
+		var auxname = '';
+for (var i = 0; i < related.length; i++) {
+	console.log(related[i])
+	auxname = related[i].name;
+  toRender.push(<a href={related[i].url} key={i}> {auxname} </a>);
+}
+			console.log(toRender)
+			return toRender;
+	}
+
 	calculateMean(sentiments){
+
+		let negative = 0
+
 		var sum = sentiments.reduce((sum, sentiments)=>{
-					return sum + sentiments.score;
+					if( sentiments.score*1 < 0.8 ) return negative++
 			}, 0);
 
-		const mean = Math.ceil(sum / sentiments.length);
-		return mean;
+		   const total = negative / sentiments.length
+		  
+		return total;
 	}
 
 
@@ -74,6 +93,10 @@ class Busqueda extends Component{
 			var mean = this.calculateMean(this.props.sentiments);
 		}
 		
+		console.log(this.props.related)
+
+		const related = this.props.related.news ? this.renderRelated(this.props.related.news) : '';
+		console.log(related)
 
 		return(
 			
@@ -96,25 +119,48 @@ class Busqueda extends Component{
 						<p>{this.props.disLikes.dislikes}</p>
 					</div>
 				</div>
-				<div className="col-xs-12 col-sm-6 infoBoxItem">
+				<div className="col-xs-12 infoBoxItem">
 					<FontAwesome name='twitter' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
 					{this.props.twitter.tweets} veces retwitteado.
+					<div id="barraTwitter" style={{
+					    width: this.props.twitter.tweets*2,
+    height: '5px',
+    background: '#f8f9fb',
+    position: 'absolute',
+maxWidth: '100%'}}><div></div></div>
 				</div>
-				<div className="col-xs-12 col-sm-6 infoBoxItem">
+				<div className="col-xs-12 infoBoxItem">
 					<FontAwesome name='facebook-official' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
 					<br></br>
 					<FontAwesome name='commenting' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
-					comment_count {this.props.fb.comment_count}
+					Comentado {this.props.fb.comment_count} veces.
+										<div id="barraFBComents" style={{
+					    width: this.props.fb.comment_count*2,
+    height: '5px',
+    background: '#f8f9fb',
+    position: 'absolute',
+maxWidth: '100%'}}><div></div></div>
 					<br></br>
 					<FontAwesome name='thumbs-up' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
-					share_count {this.props.fb.share_count}
+					Compartido {this.props.fb.share_count} veces.
+												<div id="barraFBShares" style={{
+					    width: this.props.fb.share_count*2,
+    height: '5px',
+    background: '#f8f9fb',
+    position: 'absolute',
+maxWidth: '100%'}}><div></div></div>
 				</div>
 				<div className="col-xs-12 infoBoxItem">
 					<FontAwesome name='language' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
-					{mean}
+					{mean < 0.5 ? 'Se trata de un texto negativo' : 'Se trata de un texto positivo'}
 					 
 				</div>
-					}
+
+				<div className="col-xs-12 infoBoxItem">
+					<h2>Noticias Relacionadas</h2>
+					 {related}
+				</div>
+
 			</div>
 		)
 	}
@@ -130,7 +176,8 @@ const mapStateToProps = state => ({
 	twitter: state.repoInfo.twitter,
 	lenguaje: state.repoInfo.lenguaje,
 	veracity: state.repoInfo.veracity,
-	sentiments: state.repoInfo.lenguaje.sentiments
+	sentiments: state.repoInfo.lenguaje.sentiments,
+	related: state.repoInfo.related
 });
 
 const mapDispatchToProps = {
@@ -143,7 +190,8 @@ const mapDispatchToProps = {
 	loadLenguageAnalysis,
 	loadVeracity,
 	like,
-	dislike
+	dislike,
+	loadrelated
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Busqueda);

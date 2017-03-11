@@ -7,6 +7,7 @@ import { LOAD_URL, LOAD_NEW_ATTEMPT, LOAD_NEW_SUCCESS, LOAD_NEW_FAIL,
     LOAD_VERACITY_ATTEMPT, LOAD_VERACITY_SUCCESS, LOAD_VERACITY_FAIL,
     LOAD_LIKE_ATTEMPT, LOAD_LIKE_SUCCESS, LOAD_LIKE_FAIL,
 LOAD_DISLIKE_ATTEMPT, LOAD_DISLIKE_SUCCESS, LOAD_DISLIKE_FAIL,
+LOAD_RELATED_ATTEMPT, LOAD_RELATED_SUCCESS, LOAD_RELATED_FAIL,
 } from './actionTypes';
 
 
@@ -93,6 +94,14 @@ function veracity(state= {}, action){
   }
 }
 
+function related(state= {}, action){
+  switch(action.type){
+    case LOAD_RELATED_SUCCESS:
+      return Object.assign({}, state, action.payload);
+    default:
+      return state;
+  }
+}
 
 
 export default combineReducers({
@@ -103,5 +112,6 @@ export default combineReducers({
   fb,
   twitter,
   lenguaje,
-  veracity
+  veracity,
+  related
 })
