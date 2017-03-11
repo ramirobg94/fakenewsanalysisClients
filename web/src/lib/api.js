@@ -18,7 +18,6 @@ class Api {
   }
 
   static post(route, params) {
-    console.log('post')
     return this.xhr(route, params, 'POST')
   }
 

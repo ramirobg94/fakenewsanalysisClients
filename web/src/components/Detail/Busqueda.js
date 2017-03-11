@@ -26,21 +26,33 @@ class Busqueda extends Component{
 	}
 
 	componentWillMount(){
-		//this.props.loadLikes(this.props.url);
-		//this.props.loadDislikes(this.props.url);
+		this.props.loadLikes(this.props.url);
+		this.props.loadDislikes(this.props.url);
 		this.props.loadFb(this.props.url);
 		this.props.loadTwitter(this.props.url);
 		this.props.loadLenguageAnalysis(this.props.url);
 	}
 
+
+
 	render(){
+
+		//console.log(this.props)
+		const noticia = this.props.noticia;
 
 		console.log(this.props)
 
 		return(
 
-			<div className="col-xs-12 col-sm-6 noPadding" id="filterBox">
-				<p>Busqueda</p>
+			<div className="col-xs-12 col-sm-6 noPadding text-center" id="filterBox">
+			<h2>title {noticia.title} </h2>
+				<h2>Medio {noticia.source} </h2>
+				<h2>Autor {noticia.author} </h2>
+	likes {this.props.likes.likes}
+				disLikes {this.props.disLikes.dislikes}
+				comment_count {this.props.fb.comment_count}
+				share_count {this.props.fb.share_count}
+				tweets {this.props.twitter.tweets}
 			</div>
 		)
 	}

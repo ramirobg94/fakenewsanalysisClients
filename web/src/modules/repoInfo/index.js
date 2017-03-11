@@ -25,8 +25,6 @@ function repoInfo(state= url, action){
 function noticias(state= {}, action){
   switch(action.type){
     case LOAD_NEW_SUCCESS:
-    console.log("loadSUccess")
-    console.log(action)
       return Object.assign({}, state, action.payload);
     default:
       return state;
@@ -36,7 +34,7 @@ function noticias(state= {}, action){
 function likes(state= {}, action){
   switch(action.type){
     case LOAD_LIKES_SUCCESS:
-    console.log("loadSUccess")
+    console.log("likesSuces")
     console.log(action)
       return Object.assign({}, state, action.payload);
     default:
@@ -47,7 +45,7 @@ function likes(state= {}, action){
 function disLikes(state= {}, action){
   switch(action.type){
     case LOAD_DISLIKES_SUCCESS:
-    console.log("loadSUccess")
+    console.log("dislikesSucess")
     console.log(action)
       return Object.assign({}, state, action.payload);
     default:
@@ -59,8 +57,6 @@ function disLikes(state= {}, action){
 function fb(state= {}, action){
   switch(action.type){
     case LOAD_FB_SUCCESS:
-    console.log("loadSUccess")
-    console.log(action)
       return Object.assign({}, state, action.payload);
     default:
       return state;
@@ -70,8 +66,6 @@ function fb(state= {}, action){
 function twitter(state= {}, action){
   switch(action.type){
     case LOAD_TWITTER_SUCCESS:
-    console.log("loadSUccess")
-    console.log(action)
       return Object.assign({}, state, action.payload);
     default:
       return state;
@@ -81,8 +75,6 @@ function twitter(state= {}, action){
 function lenguaje(state= {}, action){
   switch(action.type){
     case LOAD_LENGUAJE_SUCCESS:
-    console.log("loadSUccess")
-    console.log(action)
       return Object.assign({}, state, action.payload);
     default:
       return state;

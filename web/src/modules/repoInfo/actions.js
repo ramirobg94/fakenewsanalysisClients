@@ -29,7 +29,7 @@ export function loadNew(details){
      return Api.post('/article',{url: details}).then(response => {
 
       var jsonO  = JSON.parse(response.responseText);
-      console.log(jsonO);
+ 
       dispatch({
         type: LOAD_NEW_SUCCESS,
         payload: jsonO
@@ -47,7 +47,7 @@ export function loadNew(details){
    }else{
     dispatch({
       type: LOAD_NEW_FAIL,
-      error: err
+      error: 'no url'
     })
   }
 
@@ -65,7 +65,7 @@ export function loadLikes(details){
 
     if(details){
      return Api.post('/getlikes',{url: details}).then(response => {
-
+      console.log("likes", response);
       var jsonO  = JSON.parse(response.responseText);
       dispatch({
         type: LOAD_LIKES_SUCCESS,
@@ -82,7 +82,7 @@ export function loadLikes(details){
    }else{
     dispatch({
       type: LOAD_LIKES_FAIL,
-      error: err
+      error: 'no likes'
     })
   }
 }
@@ -98,7 +98,7 @@ export function loadDislikes(details){
 
     if(details){
      return Api.post('/getdislikes',{url: details}).then(response => {
-
+      console.log("dislikes", response)
       var jsonO  = JSON.parse(response.responseText);
       console.log(jsonO);
       dispatch({
@@ -116,7 +116,7 @@ export function loadDislikes(details){
    }else{
     dispatch({
       type: LOAD_DISLIKES_FAIL,
-      error: err
+      error: 'no dislikes'
     })
   }
 }
@@ -135,7 +135,6 @@ export function loadFb(details){
      return Api.post('/fb',{url: details}).then(response => {
 
       var jsonO  = JSON.parse(response.responseText);
-      console.log(jsonO);
       dispatch({
         type: LOAD_FB_SUCCESS,
         payload: jsonO
@@ -151,7 +150,7 @@ export function loadFb(details){
    }else{
     dispatch({
       type: LOAD_FB_FAIL,
-      error: err
+      error: 'no fb data'
     })
   }
 }
@@ -170,7 +169,7 @@ export function loadTwitter(details){
      return Api.post('/twitter',{url: details}).then(response => {
 
       var jsonO  = JSON.parse(response.responseText);
-      console.log(jsonO);
+  
       dispatch({
         type: LOAD_TWITTER_SUCCESS,
         payload: jsonO
@@ -186,7 +185,7 @@ export function loadTwitter(details){
    }else{
     dispatch({
       type: LOAD_TWITTER_FAIL,
-      error: err
+      error: 'no twitter'
     })
   }
 }
@@ -204,7 +203,6 @@ export function loadLenguageAnalysis(details){
      return Api.post('/languageAnalysis',{url: details}).then(response => {
 
       var jsonO  = JSON.parse(response.responseText);
-      console.log(jsonO);
       dispatch({
         type: LOAD_LENGUAJE_SUCCESS,
         payload: jsonO
@@ -220,7 +218,7 @@ export function loadLenguageAnalysis(details){
    }else{
     dispatch({
       type: LOAD_LENGUAJE_FAIL,
-      error: err
+      error: 'no languajes'
     })
   }
 }
