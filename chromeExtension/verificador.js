@@ -84,6 +84,22 @@ $(document).ready(function() {
     $('#verumBox').remove();
   })
 
+$('#btnLike').mouseover(function(){
+  $('#btnLike').css( 'background', 'rgb(56, 145, 255)');
+})
+
+$('#btnDisLike').mouseover(function(){
+  $('#btnDisLike').css( 'background', 'rgb(56, 145, 255)');
+})
+
+
+$('#btnLike').mouseout(function(){
+  $('#btnLike').css( 'background', '#7db7ff');
+})
+
+$('#btnDisLike').mouseout(function(){
+  $('#btnDisLike').css( 'background', '#7db7ff');
+})
 
   $('#btnLike').click(function(){
     $.ajax({                        

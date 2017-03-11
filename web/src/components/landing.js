@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router';
+import {Link, context, browserHistory} from 'react-router';
 
 import { loadUrl } from '../modules/repoInfo';
 
@@ -16,6 +16,17 @@ class Landing extends Component{
 		this.props.loadUrl({
 			[e.target.name]: e.target.value
 		});
+	}
+
+	componentWillMount(){
+		
+		if(this.props.location.query.url){
+			this.props.loadUrl({
+				url: this.props.location.query.url
+			});
+			browserHistory.push('/detail');
+		}
+		
 	}
 
 	render(){
