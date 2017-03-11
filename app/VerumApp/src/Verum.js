@@ -11,7 +11,6 @@ import {
   Alert
 } from 'react-native';
 
-var XMLHttpRequestPromise = require('xhr-promise');
 
 import News from './News';
 import Detail from './Detail';
@@ -61,16 +60,14 @@ llamada(url,param,verb){
       let response = await fetch('https://fakenewsaintgood.herokuapp.com/getlikes', {
             method: 'POST',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Accept': '*/*',
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
-        data: JSON.stringify({
-          "url":urlb
-        })
+        data: "url" + urlb
       });
 
-      console.log(response)
-      let res = await response.text();
+
+      let res = await response;
       console.log(res)
       
       if( response.status >= 200 && response.status < 300) {
@@ -86,44 +83,7 @@ llamada(url,param,verb){
 
     }
 
-   /* var request = new XMLHttpRequest();
-request.onreadystatechange = (e) => {
-  if (request.readyState !== 4) {
-    return;
-  }
 
-  if (request.status === 200) {
-    console.log('success', request.responseText);
-  } else {
-    console.warn('error');
-  }
-};
-
-request.open('POST', 'http://internacional.elpais.com/internacional/2017/03/10/actualidad/1489114908_588046.html');
-request.send();
-
-    
-    const urlb ='http://internacional.elpais.com/internacional/2017/03/10/actualidad/1489114908_588046.html'
-    try{
-      let response = await this.llamada('https://fakenewsaintgood.herokuapp.com/getlikes','url='+urlb, 'POST')
-
-      let res = await response.text();
-this.setState({pepe: res})
-        
-
-
-      if( response.status >= 200 && response.status < 300) {
-            
-        
-
-      } else {
-        let error = res;
-        throw error;
-      }
-    }catch(error){
-
-    }
-  */
 
   }
 
