@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router';
 
+import FontAwesome from 'react-fontawesome';
+
 import { loadUrl,
 	loadNew,
 	loadLikes,
@@ -58,10 +60,34 @@ class Busqueda extends Component{
 			<h3><span className="soso">Título</span> {noticia.title} </h3>
 				<h4><span className="soso">Medio</span> {noticia.source} </h4>
 				<h4><span className="soso">Autor</span> {noticia.author} </h4>
-				<i className="material-icons">&#xE87B;</i>
-				<i className="material-icons">&#xE8CD;</i>
-				<i class="material-icons">&#xE8DC;</i>
-				<i class="material-icons">&#xE8DB;</i>
+				<div className="col-xs-12 infoBoxItemFirst">
+					<div className="botonFa">
+						<FontAwesome name='smile-o' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}} />
+						<p>{this.props.likes.likes}</p>
+					</div>
+					<div className="botonFa">
+						<FontAwesome name='frown-o' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}} />
+						<p>{this.props.disLikes.dislikes}</p>
+					</div>
+				</div>
+				<div className="col-xs-12 infoBoxItem">
+					<FontAwesome name='twitter' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+				</div>
+				<div className="col-xs-12 infoBoxItem">
+					<FontAwesome name='facebook-official' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+					<br></br>
+					<FontAwesome name='commenting' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+					<FontAwesome name='thumbs-up' size='2x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color: '#ffffff' }} />
+				</div>
+
+
+				
+
+				
+
+				
+
+				
 				likes {this.props.likes.likes}
 				disLikes {this.props.disLikes.dislikes}
 				comment_count {this.props.fb.comment_count}

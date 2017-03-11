@@ -105,3 +105,30 @@
     padding: 10px;
     color: #4c4c4c;
 }
+.botonFa{
+	width: 30%;
+    text-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 0px;
+    color: #b1abab;
+    min-height: 40px;
+    border: solid 1px #F8F9FA;
+    background: rgba(248, 249, 251, 0.4);
+    text-align: center;
+    padding: 5px;
+    color: #444;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 5px 0px #b3b6bb;
+    margin: 0 10%;
+}
+
+.botonFa:hover{
+	background: rgba(248, 249, 251, 1);
+}
+
+.infoBoxItemFirst{
+	margin-top: 2vw;
+	display: flex;
+}
+.infoBoxItem{
+	margin-top: 5vw;
+	display: flex;
+}
