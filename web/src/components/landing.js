@@ -48,7 +48,7 @@ class Landing extends Component{
 
 						
 
-						<Link to="detail">
+						<Link to="/detail">
 							<div id="submitBox" className="text-center" onClick={ this.handleSubmit }>
 							<span className="glyphicon glyphicon-search"></span>
 						</div>
