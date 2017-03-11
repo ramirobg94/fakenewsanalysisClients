@@ -55,8 +55,38 @@ llamada(url,param,verb){
 
 
   async loadLikes(url){
+    const urlb = 'http://internacional.elpais.com/internacional/2017/03/11/estados_unidos/1489186916_587899.html';
+    console.log(urlb)
+    try{
+      let response = await fetch('https://fakenewsaintgood.herokuapp.com/getlikes', {
+            method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        data: JSON.stringify({
+          "url":urlb
+        })
+      });
 
-    var request = new XMLHttpRequest();
+      console.log(response)
+      let res = await response.text();
+      console.log(res)
+      
+      if( response.status >= 200 && response.status < 300) {
+            
+      
+        
+
+      } else {
+        let error = res;
+        throw error;
+      }
+    }catch(error){
+
+    }
+
+   /* var request = new XMLHttpRequest();
 request.onreadystatechange = (e) => {
   if (request.readyState !== 4) {
     return;
@@ -93,7 +123,7 @@ this.setState({pepe: res})
     }catch(error){
 
     }
-  
+  */
 
   }
 
